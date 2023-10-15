@@ -10,6 +10,11 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'home'
+  },
+  {
+    path: 'detail',
+    loadChildren: () =>
+      import('./modules/detail/detail.module').then((m) => m.DetailModule),
   }
 ];
 
