@@ -8,9 +8,14 @@ const routes: Routes = [
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'detail',
+    loadChildren: () =>
+      import('./modules/detail/detail.module').then((m) => m.DetailModule),
+  },
+  {
     path: '**',
     redirectTo: 'home'
-  }
+  },
 ];
 
 @NgModule({
