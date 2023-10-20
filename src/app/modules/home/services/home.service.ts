@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HomeModule } from '../home.module';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: HomeModule
-})
+import { Character } from '../../shared/interfaces/character-interface';
+@Injectable()
 export class HomeService {
 
+  private apiUrl: string = 'https://rickandmortyapi.com/api';
+
+  constructor(private http: HttpClient) { }
+
+  public getCharacter(): Observable<Character[]> {
+    const url = `${ this.apiUrl }/character`;
+
+    return this.http.get<Character[]>( url );
+  }
 
 }
