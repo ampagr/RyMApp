@@ -1,10 +1,22 @@
+export interface CharacterResponse {
+  info:    Info;
+  results: Character[];
+}
+
+export interface Info {
+  count: number;
+  pages: number;
+  next:  string;
+  prev:  string;
+}
+
 export interface Character {
   id:       number;
   name:     string;
-  status:   string;
-  species:  string;
+  status:   Status;
+  species:  Species;
   type:     string;
-  gender:   string;
+  gender:   Gender;
   origin:   Location;
   location: Location;
   image:    string;
@@ -13,8 +25,25 @@ export interface Character {
   created:  string;
 }
 
+export enum Gender {
+  FEMALE = "Female",
+  GENDERLESS = "Genderless",
+  MALE = "Male",
+  UNKNOWN = "unknown",
+}
+
 export interface Location {
   name: string;
   url:  string;
 }
 
+export enum Species {
+  ALIEN = "Alien",
+  HUMAN = "Human",
+}
+
+export enum Status {
+  ALIVE = "Alive",
+  DEAD = "Dead",
+  UNKNOWN = "unknown",
+}

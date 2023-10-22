@@ -10,10 +10,10 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
 
-  public getCharacter(): Observable<Character[]> {
+  public getCharacters(): Observable<Character> {
     const url = `${ this.apiUrl }/character`;
 
-    return this.http.get<Character[]>( url );
+    return this.http.get<Character>( url );
   }
 
 }
