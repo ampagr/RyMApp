@@ -8,10 +8,12 @@ import { Character } from '../../shared/interfaces/character-interface';
 @Injectable()
 export class HomeService {
 
+  private baseUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) { }
 
   public getCharacters(): Observable<Character> {
-    const url = `${ environment.apiUrl }/character`;
+    const url = `${ this.baseUrl }/character`;
 
     return this.http.get<Character>( url );
   }
