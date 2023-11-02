@@ -10,11 +10,11 @@ export class DetailComponent implements OnInit {
   constructor( private detailService: DetailService ) {}
 
   ngOnInit(): void {
-    this.getCharacterById('1');
+    this.getCharacterById(1);
   }
 
-  private getCharacterById( id: string ): void {
-    this.detailService.getCharacterById(id.toString()).subscribe((character) => {
+  private getCharacterById( id: number ): void {
+    this.detailService.getCharacterById(id).subscribe((character) => {
       console.log(character);
     });
   }

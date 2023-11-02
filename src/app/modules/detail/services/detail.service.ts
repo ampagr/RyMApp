@@ -12,7 +12,7 @@ export class DetailService {
 
   constructor(private http: HttpClient) {}
 
-  public getCharacterById( id: string): Observable<DetailCharacter| undefined> {
+  public getCharacterById( id: number): Observable<DetailCharacter> {
     const characterIdUrl = `${this.baseUrl}/character/${id}`;
 
     return this.http.get<DetailCharacter>(characterIdUrl);

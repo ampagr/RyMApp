@@ -30,25 +30,5 @@ export class HomeService {
     );
   }
 
-  public getOldCharacters(): Observable<HomeCharacter[]> {
-    const url = `${ this.baseUrl }/character`;
-
-    return this.http.get<CharacterResponse>( url )
-    .pipe(
-      map<CharacterResponse, HomeCharacter[]>( (characterResponse: CharacterResponse) => {
-        const characters= characterResponse.results.map( (character: Character) => {
-          console.log(character);
-          const homeCharacter: HomeCharacter = {
-            name: character.name,
-            species: character.species,
-            gender: character.gender,
-            image: character.image,
-          }
-          return homeCharacter;
-        })
-        return characters;
-      })
-    )
-  }
 
 }
