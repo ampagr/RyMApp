@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import { environment } from 'src/environments/environment.development';
 
-import { Character } from '../../shared/interfaces/character-interface';
+import { HomeCharacter } from '../interfaces/home.character.interface';
+import { Character, CharacterResponse } from '../../shared/interfaces/character-interface';
+
 @Injectable()
 export class HomeService {
 
@@ -12,10 +14,41 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
 
-  public getCharacters(): Observable<Character> {
+  public getCharacters(): Observable<HomeCharacter[]> {
+    const characterUrl = `${ this.baseUrl }/character`;
+
+    return this.http.get<CharacterResponse>( characterUrl )
+    .pipe(
+      map<CharacterResponse, HomeCharacter[]>( (characterResponse: CharacterResponse) =>
+       characterResponse.results.map( (character: Character) => ({
+            name: character.name,
+            species: character.species,
+            gender: character.gender,
+            image: character.image,
+          }))
+       )
+    );
+  }
+
+  public getOldCharacters(): Observable<HomeCharacter[]> {
     const url = `${ this.baseUrl }/character`;
 
-    return this.http.get<Character>( url );
+    return this.http.get<CharacterResponse>( url )
+    .pipe(
+      map<CharacterResponse, HomeCharacter[]>( (characterResponse: CharacterResponse) => {
+        const characters= characterResponse.results.map( (character: Character) => {
+          console.log(character);
+          const homeCharacter: HomeCharacter = {
+            name: character.name,
+            species: character.species,
+            gender: character.gender,
+            image: character.image,
+          }
+          return homeCharacter;
+        })
+        return characters;
+      })
+    )
   }
 
 }
