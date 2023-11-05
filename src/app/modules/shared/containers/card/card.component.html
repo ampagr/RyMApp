@@ -1,0 +1,20 @@
+<section class="container">
+  <div class="card-container" *ngIf="cardConfig">
+    <img [src]="cardConfig.image" alt="Character Image">
+    <div class="card-info">
+      <h1>{{ cardConfig.name }}</h1>
+      <p>Specie: {{ cardConfig.species }}</p>
+      <p>Gender: {{ cardConfig.gender }}</p>
+      <ng-container *ngIf="hasDetailCharacter()">
+        <p>Id: {{ cardConfig.id }}</p>
+        <p>Created: {{ cardConfig.created }}</p>
+        <p>Origin: {{ cardConfig.origin?.name }}</p>
+        <p>Status: {{ cardConfig.status }}</p>
+        <p>Last Known location: {{ cardConfig.location?.name }} </p>
+        <p>First seen in: {{ cardConfig.episode?.[0] }}</p>
+        <p>Url: {{ cardConfig.url }}</p>
+        <p></p>
+      </ng-container>
+    </div>
+  </div>
+</section>

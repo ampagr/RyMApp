@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { DetailRoutingModule } from './detail-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { SharedModule } from '../shared/shared.module';
+
 import { DetailComponent } from './containers/detail/detail.component';
 
 import { DetailService } from './services/detail.service';
@@ -16,6 +18,7 @@ import { DetailService } from './services/detail.service';
     CommonModule,
     DetailRoutingModule,
     HttpClientModule,
+    SharedModule
   ],
   providers: [ DetailService ]
 })
