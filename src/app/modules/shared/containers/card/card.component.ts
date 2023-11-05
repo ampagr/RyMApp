@@ -10,7 +10,4 @@ export class CardComponent {
 
   @Input() cardConfig!: Card;
 
-  public hasDetailCharacter(): boolean {
-    return 'status' in this.cardConfig;
-  }
 }
