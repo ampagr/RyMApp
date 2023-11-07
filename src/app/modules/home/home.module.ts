@@ -4,7 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { SharedModule } from '../shared/shared.module';
+
 import { HomeComponent } from './containers/home/home.component';
+
 import { HomeService } from './services/home.service';
 
 @NgModule({
@@ -12,8 +15,8 @@ import { HomeService } from './services/home.service';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    HttpClientModule
-
+    HttpClientModule,
+    SharedModule
   ],
   providers: [ HomeService ]
 })

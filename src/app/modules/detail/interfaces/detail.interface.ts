@@ -1,3 +1,5 @@
+import { Gender, Status, Location } from "../../shared/interfaces/character-interface";
+
 export interface DetailCharacter {
   id:       number;
   name:     string;
@@ -13,20 +15,5 @@ export interface DetailCharacter {
   created:  string;
 }
 
-export enum Gender {
-  FEMALE = "Female",
-  GENDERLESS = "Genderless",
-  MALE = "Male",
-  UNKNOWN = "unknown",
-}
 
-export interface Location {
-  name: string;
-  url:  string;
-}
 
-export enum Status {
-  ALIVE = "Alive",
-  DEAD = "Dead",
-  UNKNOWN = "unknown",
-}

@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailService } from '../../services/detail.service';
+import { DetailCharacter } from '../../interfaces/detail.interface';
 
 @Component({
   templateUrl: 'detail.component.html',
   styleUrls: ['detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+
+  public characterCard!: DetailCharacter;
 
   constructor( private detailService: DetailService ) {}
 
@@ -14,8 +17,9 @@ export class DetailComponent implements OnInit {
   }
 
   private getCharacterById( id: number ): void {
-    this.detailService.getCharacterById(id).subscribe((character) => {
-      console.log(character);
+    this.detailService.getCharacterById(id).subscribe((detailCharacter) => {
+      this.characterCard = detailCharacter;
+      console.log(this.characterCard);
     });
   }
 }
