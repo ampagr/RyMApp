@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../../services/home.service';
 
+import { Component, OnInit } from '@angular/core';
 import { HomeCharacter } from '../../interfaces/home.character.interface';
+import { HomeService } from '../../services/home.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -11,7 +12,10 @@ export class HomeComponent implements OnInit {
 
   public homeCharacters: HomeCharacter[] = [];
 
-  constructor(private homeService: HomeService) {}
+  constructor(
+    private homeService: HomeService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.getCharacters();
@@ -20,7 +24,11 @@ export class HomeComponent implements OnInit {
   private getCharacters(): void {
     this.homeService.getCharacters().subscribe((homeCharacters) => {
       this.homeCharacters = homeCharacters;
-      console.log(homeCharacters);
     });
   }
+
+  public navigateToDetail(id: number): void {
+    this.router.navigate(['detail/', id])
+  }
 }
+

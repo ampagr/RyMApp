@@ -1,3 +1,4 @@
-<div class="detail-container">
-  <shared-card [cardConfig]="characterCard"></shared-card>
+<div *ngIf="characterCard">
+  <button class="detail__button" (click)="navigateToHome()">Go to home</button>
+  <rm-card [cardConfig]="characterCard"></rm-card>
 </div>
