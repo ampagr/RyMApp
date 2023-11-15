@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 import { HomeCharacter } from '../interfaces/home.character.interface';
-import { Character, CharacterResponse } from '../../shared/interfaces/character-interface';
+import { CharacterResponse } from '../../shared/interfaces/character-interface';
 
 @Injectable()
 export class HomeService {
@@ -20,15 +20,15 @@ export class HomeService {
     return this.http.get<CharacterResponse>( characterUrl )
     .pipe(
       map<CharacterResponse, HomeCharacter[]>( (characterResponse: CharacterResponse) =>
-       characterResponse.results.map( (character: Character) => ({
-            name: character.name,
-            species: character.species,
-            gender: character.gender,
-            image: character.image,
-          }))
-       )
-    );
-  }
-
+      characterResponse.results.map( (homeCharacter: HomeCharacter) => ({
+        id:      homeCharacter.id,
+        name:    homeCharacter.name,
+        species: homeCharacter.species,
+        gender:  homeCharacter.gender,
+        image:   homeCharacter.image,
+      }))
+   )
+);
+}
 
 }

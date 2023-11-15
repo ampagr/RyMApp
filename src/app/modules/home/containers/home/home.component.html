@@ -1,3 +1,8 @@
-<div *ngFor="let homeCharacter of homeCharacters">
-  <shared-card [cardConfig]="homeCharacter"></shared-card>
+<div class="home-container">
+  <button
+    *ngFor="let homeCharacter of homeCharacters"
+    (click)="navigateToDetail(homeCharacter.id)"
+  >
+    <rm-card [cardConfig]= "{ name: homeCharacter.name, species: homeCharacter.species, gender: homeCharacter.gender, image: homeCharacter.image }"></rm-card>
+  </button>
 </div>
