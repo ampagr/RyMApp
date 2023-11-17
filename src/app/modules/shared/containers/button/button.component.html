@@ -1,0 +1,8 @@
+<p>button works!</p>
+<button
+  class="rm-button"
+  [ngClass]="{ default: isShowed, medium: isShowed }"
+  (click)="selectedButton()"
+>
+  {{ buttonText }}
+</button>
