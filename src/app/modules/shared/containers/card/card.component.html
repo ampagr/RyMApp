@@ -1,13 +1,12 @@
-<article class="card-container" *ngIf="cardConfig" >
-  <div class="card-container__card-img">
+<article class="card__container" *ngIf="cardConfig" >
+  <div class="card__container--card-img">
     <img [src]="cardConfig.image" alt="Character Image">
   </div>
-  <div class="card-container__card-info">
+  <div class="card__container--card-info">
     <h1>{{ cardConfig.name }}</h1>
     <p>Specie: {{ cardConfig.species }}</p>
     <p>Gender: {{ cardConfig.gender }}</p>
 
-    <p *ngIf="cardConfig.id">Id: {{ cardConfig.id }}</p>
     <p *ngIf="cardConfig.created">Created: {{ cardConfig.created }}</p>
     <p *ngIf="cardConfig.origin">Origin: {{ cardConfig.origin.name }}</p>
     <p *ngIf="cardConfig.status">Status: {{ cardConfig.status }}</p>
