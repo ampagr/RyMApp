@@ -9,26 +9,25 @@ import { CharacterResponse } from '../../shared/interfaces/character-interface';
 
 @Injectable()
 export class HomeService {
-
   private baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getCharacters(): Observable<HomeCharacter[]> {
-    const characterUrl = `${ this.baseUrl }/character`;
+    const characterUrl = `${this.baseUrl}/character`;
 
-    return this.http.get<CharacterResponse>( characterUrl )
-    .pipe(
-      map<CharacterResponse, HomeCharacter[]>( (characterResponse: CharacterResponse) =>
-      characterResponse.results.map( (homeCharacter: HomeCharacter) => ({
-        id:      homeCharacter.id,
-        name:    homeCharacter.name,
-        species: homeCharacter.species,
-        gender:  homeCharacter.gender,
-        image:   homeCharacter.image,
-      }))
-   )
-);
-}
+    return this.http.get<CharacterResponse>(characterUrl).pipe(
+      map<CharacterResponse, HomeCharacter[]>(
+        (characterResponse: CharacterResponse) =>
+          characterResponse.results.map((homeCharacter: HomeCharacter) => ({
+            id: homeCharacter.id,
+            name: homeCharacter.name,
+            species: homeCharacter.species,
+            gender: homeCharacter.gender,
+            image: homeCharacter.image,
+          }))
+      )
+    );
+  }
 
 }

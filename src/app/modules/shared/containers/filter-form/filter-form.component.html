@@ -1,0 +1,11 @@
+<form [formGroup]="filterForm" (formChange)="formSubscription()">
+  <div class="form-container">
+    <div class="">
+      <label class="form-label">Gender:</label>
+      <select formControlName="gender" class="form-control">
+        <option value="">-- Choose your gender --</option>
+        <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+      </select>
+    </div>
+  </div>
+</form>
