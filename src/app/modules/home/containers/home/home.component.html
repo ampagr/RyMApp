@@ -1,8 +1,9 @@
-<div class="home-container">
+<div class="home__container">
   <button
+    class="home__container--button"
     *ngFor="let homeCharacter of homeCharacters"
     (click)="navigateToDetail(homeCharacter.id)"
   >
-    <rm-card [cardConfig]= "{ name: homeCharacter.name, species: homeCharacter.species, gender: homeCharacter.gender, image: homeCharacter.image }"></rm-card>
+    <rm-card [cardConfig]="setCardConfig(homeCharacter)"></rm-card>
   </button>
 </div>

@@ -1,20 +1,22 @@
-<section class="container">
-  <div class="card-container" *ngIf="cardConfig">
+<article class="card__container" *ngIf="cardConfig" >
+  <div class="card__container--card-img">
     <img [src]="cardConfig.image" alt="Character Image">
-    <div class="card-info">
-      <h1>{{ cardConfig.name }}</h1>
-      <p>Specie: {{ cardConfig.species }}</p>
-      <p>Gender: {{ cardConfig.gender }}</p>
-
-      <p *ngIf="cardConfig.id">Id: {{ cardConfig.id }}</p>
-      <p *ngIf="cardConfig.created">Created: {{ cardConfig.created }}</p>
-      <p *ngIf="cardConfig.origin">Origin: {{ cardConfig.origin.name }}</p>
-      <p *ngIf="cardConfig.status">Status: {{ cardConfig.status }}</p>
-      <p *ngIf="cardConfig.location">Last Known location: {{ cardConfig.location.name }} </p>
-      <p *ngIf="cardConfig.episode">First seen in: {{ cardConfig.episode[0] }}</p>
-      <p *ngIf="cardConfig.url">Url: {{ cardConfig.url }}</p>
-
-    </div>
   </div>
-</section>
+  <div class="card__container--card-info">
+    <h1>{{ cardConfig.name }}</h1>
+    <p>Specie: {{ cardConfig.species }}</p>
+    <p>Gender: {{ cardConfig.gender }}</p>
+
+    <p *ngIf="cardConfig.created">Created: {{ cardConfig.created }}</p>
+    <p *ngIf="cardConfig.origin">Origin: {{ cardConfig.origin.name }}</p>
+    <p *ngIf="cardConfig.status">Status: {{ cardConfig.status }}</p>
+    <p *ngIf="cardConfig.location">Last Known location: {{ cardConfig.location.name }} </p>
+    <p *ngIf="cardConfig.episode">First seen in: {{ cardConfig.episode[0] }}</p>
+    <p *ngIf="cardConfig.url">Url: {{ cardConfig.url }}</p>
+
+  </div>
+</article>
+
+
+
 
