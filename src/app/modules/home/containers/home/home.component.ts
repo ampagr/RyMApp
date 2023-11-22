@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Gender } from 'src/app/modules/shared/interfaces/character-interface';
 import { HomeCharacter } from '../../interfaces/home.character.interface';
 import { HomeService } from '../../services/home.service';
 import { Router } from '@angular/router';
@@ -21,22 +20,22 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['detail/', id]);
   }
 
-  public showSelectedGender(gender: Gender): void {
-    this.homeService.getCharacters().subscribe((homeCharacters) => {
-      if (gender) {
-        this.homeCharacters = homeCharacters
-          .filter((character: HomeCharacter) => character.gender === gender)
-          .map((selectedCharacter: HomeCharacter) => ({
-            id: selectedCharacter.id,
-            name: selectedCharacter.name,
-            species: selectedCharacter.species,
-            gender: selectedCharacter.gender,
-            image: selectedCharacter.image,
-          }));
-      } else {
+  public setHomeCharacters(formValue: any): void {
+    console.log(formValue);
+    this.homeService
+      .setGender(formValue.gender)
+      .subscribe((filteredCharacters: HomeCharacter[]) => {
+        console.log(filteredCharacters);
+        this.homeCharacters = filteredCharacters;
+      });
+  }
+
+  public resetHome(formValue: any): void {
+    this.homeService
+      .resetForm(formValue)
+      .subscribe((homeCharacters: HomeCharacter[]) => {
         this.homeCharacters = homeCharacters;
-      }
-    });
+      });
   }
 
   private getCharacters(): void {

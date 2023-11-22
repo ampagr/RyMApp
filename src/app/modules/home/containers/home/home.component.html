@@ -1,5 +1,8 @@
 <div class="home-container">
-  <rm-filter-form (sendGender)="showSelectedGender($event)"></rm-filter-form>
+  <rm-filter-form
+    (onFormChange)="setHomeCharacters($event)"
+    (onReset)="resetHome($event)"
+  ></rm-filter-form>
   <button
     *ngFor="let homeCharacter of homeCharacters"
     (click)="navigateToDetail(homeCharacter.id)"

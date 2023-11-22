@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Gender } from '../../interfaces/character-interface';
-import { HomeService } from '../../../home/services/home.service';
 
 @Component({
   selector: 'rm-filter-form',
@@ -9,35 +8,38 @@ import { HomeService } from '../../../home/services/home.service';
   styleUrls: ['./filter-form.component.scss'],
 })
 export class FilterFormComponent implements OnInit {
-  public filterForm: FormGroup = this.fb.group({
-    gender: ['', Validators.required],
+  @Output() onFormChange: EventEmitter<Gender> = new EventEmitter();
+  @Output() onReset: EventEmitter<any> = new EventEmitter();
+
+  public filterForm: FormGroup = new FormGroup({
+    gender: new FormControl(null, [Validators.required]),
   });
 
-  @Output()
-  public sendGender: EventEmitter<Gender> = new EventEmitter();
+  public genders: Gender[] = [
+    Gender.FEMALE,
+    Gender.GENDERLESS,
+    Gender.MALE,
+    Gender.UNKNOWN,
+  ];
 
-  public genders!: Gender[];
+  private formEmition!: any;
 
-  constructor(private fb: FormBuilder, private homeService: HomeService) {}
   ngOnInit(): void {
     this.formSubscription();
-    this.getGenders();
   }
 
-  public getGenders(): void {
-    this.homeService.getCharacters().subscribe((homeCharacters) => {
-      this.genders = homeCharacters
-        .map((homeCharacters) => homeCharacters.gender)
-        .filter(
-          (gender, i, homeCharacters) => homeCharacters.indexOf(gender) === i
-        );
-    });
+  public emitForm(): void {
+    this.onFormChange.emit(this.formEmition);
   }
 
-  public formSubscription(): void {
-    this.filterForm.get('gender')!.valueChanges.subscribe((value) => {
-      console.log({ gender: value });
-      this.sendGender.emit(value);
+  public resetForm(): void {
+    this.onReset.emit();
+    this.filterForm.reset();
+  }
+
+  private formSubscription(): void {
+    this.filterForm.valueChanges.subscribe((filterForm) => {
+      this.formEmition = filterForm;
     });
   }
 }

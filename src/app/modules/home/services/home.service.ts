@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-
+import {
+  CharacterResponse,
+  Gender,
+} from '../../shared/interfaces/character-interface';
 import { environment } from 'src/environments/environment.development';
-
+import { FormGroup } from '@angular/forms';
 import { HomeCharacter } from '../interfaces/home.character.interface';
-import { CharacterResponse } from '../../shared/interfaces/character-interface';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, map } from 'rxjs';
 
 @Injectable()
 export class HomeService {
@@ -30,4 +32,17 @@ export class HomeService {
     );
   }
 
+  public setGender(gender: Gender): Observable<HomeCharacter[]> {
+    return this.getCharacters().pipe(
+      map((homeCharacters: HomeCharacter[]) =>
+        homeCharacters.filter(
+          (character: HomeCharacter) => character.gender === gender
+        )
+      )
+    );
+  }
+
+  public resetForm(form: FormGroup): Observable<HomeCharacter[]> {
+    return this.getCharacters();
+  }
 }
