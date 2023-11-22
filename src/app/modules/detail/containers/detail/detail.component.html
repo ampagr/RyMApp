@@ -1,4 +1,8 @@
-<div *ngIf="characterCard">
-  <button class="detail__button" (click)="navigateToHome()">Go to home</button>
-  <rm-card [cardConfig]="characterCard"></rm-card>
-</div>
+<section class="detail__container">
+  <div class="detail__container--div" *ngIf="characterCard">
+    <rm-card [cardConfig]="characterCard"></rm-card>
+    <button class="detail__container--div--button" (click)="navigateToHome()">
+      Go to home
+    </button>
+  </div>
+</section>

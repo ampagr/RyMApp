@@ -1,3 +1,4 @@
+import { Card } from 'src/app/modules/shared/interfaces/card.interface';
 import { Component, OnInit } from '@angular/core';
 import { HomeCharacter } from '../../interfaces/home.character.interface';
 import { HomeService } from '../../services/home.service';
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public homeCharacters: HomeCharacter[] = [];
+  public isShowed = true;
 
   constructor(private homeService: HomeService, private router: Router) {}
 
@@ -36,6 +38,15 @@ export class HomeComponent implements OnInit {
       .subscribe((homeCharacters: HomeCharacter[]) => {
         this.homeCharacters = homeCharacters;
       });
+  }
+
+  public setCardConfig(homeCharacter: HomeCharacter): Card {
+    return {
+      name: homeCharacter.name,
+      species: homeCharacter.species,
+      gender: homeCharacter.gender,
+      image: homeCharacter.image,
+    };
   }
 
   private getCharacters(): void {

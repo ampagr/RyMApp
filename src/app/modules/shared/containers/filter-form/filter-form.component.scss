@@ -1,0 +1,28 @@
+.form__container {
+  background-color: rgb(60, 62, 68);
+  border-radius: 8px;
+  color: white;
+  padding: 20px;
+
+  &--label {
+    margin-right: 6px;
+  }
+
+  &--control {
+    border-radius: 8px;
+    margin-right: 3px;
+    padding: 6px;
+  }
+
+  &--filter {
+    border-radius: 8px;
+    margin: 0px 3px;
+    padding: 6px;
+  }
+
+  &--reset {
+    border-radius: 8px;
+    margin: 0px 3px;
+    padding: 6px;
+  }
+}

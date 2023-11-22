@@ -1,0 +1,26 @@
+.card__container {
+  align-items: center;
+  background-color: rgb(60, 62, 68);
+  border-radius: 8px;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 12px;
+  min-height: 200px;
+  min-width: 600px;
+  overflow: hidden;
+
+  &--card-img {
+    margin: 0px;
+
+    img{
+      border-radius: 8px;
+    }
+  }
+
+  &--card-info {
+    color: rgb(255, 255, 255);
+    padding: 12px;
+    text-align: start;
+    width: 100%;
+  }
+}
