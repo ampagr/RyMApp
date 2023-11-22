@@ -29,7 +29,7 @@ export enum Gender {
   FEMALE = "Female",
   GENDERLESS = "Genderless",
   MALE = "Male",
-  UNKNOWN = "Unknown",
+  UNKNOWN = "unknown",
 }
 
 export interface Location {
