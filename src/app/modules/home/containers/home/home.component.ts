@@ -24,20 +24,16 @@ export class HomeComponent implements OnInit {
 
   public setHomeCharacters(formValue: any): void {
     console.log(formValue);
-    this.homeService
-      .setGender(formValue.gender)
-      .subscribe((filteredCharacters: HomeCharacter[]) => {
-        console.log(filteredCharacters);
-        this.homeCharacters = filteredCharacters;
-      });
-  }
-
-  public resetHome(formValue: any): void {
-    this.homeService
-      .resetForm(formValue)
-      .subscribe((homeCharacters: HomeCharacter[]) => {
-        this.homeCharacters = homeCharacters;
-      });
+    if(formValue) {
+      this.homeService
+        .setGender(formValue.gender)
+        .subscribe((filteredCharacters: HomeCharacter[]) => {
+         console.log(filteredCharacters);
+          this.homeCharacters = filteredCharacters;
+        });
+    }else {
+      this.getCharacters();
+    }
   }
 
   public setCardConfig(homeCharacter: HomeCharacter): Card {

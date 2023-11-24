@@ -8,7 +8,7 @@ import { Gender } from '../../interfaces/character-interface';
   styleUrls: ['./filter-form.component.scss'],
 })
 export class FilterFormComponent implements OnInit {
-  @Output() onFormChange: EventEmitter<Gender> = new EventEmitter();
+  @Output() onFormChange: EventEmitter<any> = new EventEmitter();
   @Output() onReset: EventEmitter<any> = new EventEmitter();
 
   public filterForm: FormGroup = new FormGroup({
