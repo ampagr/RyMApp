@@ -1,4 +1,4 @@
-
+import { Card } from 'src/app/modules/shared/interfaces/card.interface';
 import { Component, OnInit } from '@angular/core';
 import { HomeCharacter } from '../../interfaces/home.character.interface';
 import { HomeService } from '../../services/home.service';
@@ -9,13 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   public homeCharacters: HomeCharacter[] = [];
+  public isShowed = true;
 
-  constructor(
-    private homeService: HomeService,
-    private router: Router,
-  ) {}
+  constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCharacters();
@@ -28,7 +25,15 @@ export class HomeComponent implements OnInit {
   }
 
   public navigateToDetail(id: number): void {
-    this.router.navigate(['detail/', id])
+    this.router.navigate(['detail/', id]);
+  }
+
+  public setCardConfig(homeCharacter: HomeCharacter): Card {
+    return {
+      name: homeCharacter.name,
+      species: homeCharacter.species,
+      gender: homeCharacter.gender,
+      image: homeCharacter.image,
+    };
   }
 }
-

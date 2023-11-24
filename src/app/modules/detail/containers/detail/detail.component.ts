@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Button } from 'src/app/modules/shared/interfaces/button.interface';
+import { Button, Color, Size } from 'src/app/modules/shared/interfaces/button.interface';
 import { Component, OnInit } from '@angular/core';
 import { DetailCharacter } from '../../interfaces/detail.interface';
 import { DetailService } from '../../services/detail.service';
@@ -10,7 +10,7 @@ import { DetailService } from '../../services/detail.service';
 })
 export class DetailComponent implements OnInit {
   public characterCard!: DetailCharacter;
-  public button!: Button;
+  public button: Button = { color: Color.DEFAULT, size: Size.MEDIUM, text: 'Go to Home' };
   private id!: string | null;
 
   constructor(
@@ -29,7 +29,7 @@ export class DetailComponent implements OnInit {
   }
 
   public getButton(button: Button): void {
-    this.button = button;
+    this.navigateToHome();
   }
 
   private getId(): void {

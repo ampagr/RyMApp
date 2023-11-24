@@ -1,4 +1,4 @@
-.rm-button {
+.rm__button {
   border-radius: 8px;
   border: none;
   color: white;
@@ -6,36 +6,44 @@
   font-size: 16px;
   text-align: center;
   text-decoration: none;
-}
 
-.danger {
-  background-color: red;
-}
+  &--danger {
+    background-color: red;
+    color: white;
+  }
 
-.default {
-  background-color: lightgrey;
-}
+  &--default {
+    background-color: lightgrey;
+    color: rgb(39, 43, 51);
+  }
 
-.info {
-  background-color: #008cba;
-}
+  &--info {
+    background-color: #008cba;
+    color: white;
+  }
 
-.large {
-  padding: 20px 37px;
-}
+  &--large {
+    font-size: 16px;
+    padding: 20px 37px;
+  }
 
-.medium {
-  padding: 15px 32px;
-}
+  &--medium {
+    font-size: 12px;
+    padding: 15px 32px;
+  }
 
-.small {
-  padding: 10px 27px;
-}
+  &--small {
+    font-size: 10px;
+    padding: 10px 27px;
+  }
 
-.success {
-  background-color: #4caf50;
-}
+  &--success {
+    background-color: #4caf50;
+    color: white;
+  }
 
-.warning {
-  background-color: peachpuff;
+  &--warning {
+    background-color: peachpuff;
+    color: white;
+  }
 }

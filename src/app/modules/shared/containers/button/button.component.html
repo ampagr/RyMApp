@@ -1,8 +1,10 @@
-<p>button works!</p>
 <button
-  class="rm-button"
-  [ngClass]="{ default: isShowed, medium: isShowed }"
+  class="rm__button"
+  [ngClass]="{
+    color: isShowed,
+    size: isShowed,
+  }"
   (click)="selectedButton()"
 >
-  {{ buttonText }}
+  {{ button.text }}
 </button>
