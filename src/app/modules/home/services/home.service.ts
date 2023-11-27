@@ -44,10 +44,6 @@ export class HomeService {
           gender: homeCharacter.gender,
           image: homeCharacter.image,
         }))
-        ),
-        map((homeCharacters: HomeCharacter[]) =>
-        homeCharacters.filter((character) => character.gender === gender)
-        )
-      );
+      ));
   }
 }
