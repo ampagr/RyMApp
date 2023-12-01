@@ -1,0 +1,20 @@
+<form [formGroup]="filterForm" class="form__container">
+  <label class="form__container--label">Gender:</label>
+  <select
+    formControlName="gender"
+    value="Select an option"
+    class="form__container--control"
+  >
+    <option *ngFor="let gender of genders" [value]="gender">
+      {{ gender }}
+    </option>
+  </select>
+  <button
+    class="form__container--filter"
+    [disabled]="!filterForm.valid"
+    (click)="emitForm()"
+  >
+    Filter
+  </button>
+  <button class="form__container--reset" (click)="resetForm()">Reset</button>
+</form>

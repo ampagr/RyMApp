@@ -11,6 +11,10 @@
 
   &--card-img {
     margin: 0px;
+
+    img{
+      border-radius: 8px;
+    }
   }
 
   &--card-info {
