@@ -1,0 +1,16 @@
+<button
+  class="rm__button"
+  [ngClass]="{
+    danger: button.color === 'danger',
+    default: button.color === 'default',
+    info: button.color === 'info',
+    success: button.color === 'success',
+    warning: button.color === 'warning',
+    large: button.size === 'large',
+    medium: button.size === 'medium',
+    small: button.size === 'small'
+  }"
+  (click)="selectedButton()"
+>
+  {{ button.text }}
+</button>
