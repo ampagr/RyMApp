@@ -15,8 +15,8 @@ import { DetailService } from '../../services/detail.service';
 export class DetailComponent implements OnInit {
   public characterCard!: DetailCharacter;
   public button: Button = {
-    color: Color.DEFAULT,
-    size: Size.MEDIUM,
+    color: Color.DANGER,
+    size: Size.LARGE,
     text: 'Go to Home',
   };
   private id!: string | null;
