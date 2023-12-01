@@ -18,14 +18,22 @@ export class HomeComponent implements OnInit {
     this.getCharacters();
   }
 
-  private getCharacters(): void {
-    this.homeService.getCharacters().subscribe((homeCharacters) => {
-      this.homeCharacters = homeCharacters;
-    });
-  }
-
   public navigateToDetail(id: number): void {
     this.router.navigate(['detail/', id]);
+  }
+
+  public setHomeCharacters(formValue: any): void {
+    console.log(formValue);
+    if(formValue) {
+      this.homeService
+        .setGender(formValue.gender)
+        .subscribe((filteredCharacters: HomeCharacter[]) => {
+         console.log(filteredCharacters);
+          this.homeCharacters = filteredCharacters;
+        });
+    }else {
+      this.getCharacters();
+    }
   }
 
   public setCardConfig(homeCharacter: HomeCharacter): Card {
@@ -35,5 +43,11 @@ export class HomeComponent implements OnInit {
       gender: homeCharacter.gender,
       image: homeCharacter.image,
     };
+  }
+
+  private getCharacters(): void {
+    this.homeService.getCharacters().subscribe((homeCharacters) => {
+      this.homeCharacters = homeCharacters;
+    });
   }
 }
