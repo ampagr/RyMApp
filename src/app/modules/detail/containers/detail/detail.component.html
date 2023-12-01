@@ -1,8 +1,11 @@
 <section class="detail__container">
   <div class="detail__container--div" *ngIf="characterCard">
     <rm-card [cardConfig]="characterCard"></rm-card>
-    <button class="detail__container--div--button" (click)="navigateToHome()">
-      Go to home
-    </button>
+    <rm-button
+      [button]="button"
+      (onClick)="getButton($event)"
+      class="detail__container--div--button"
+    >
+    </rm-button>
   </div>
 </section>
