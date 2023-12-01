@@ -2,12 +2,18 @@
   align-items: center;
   background-color: rgb(39, 43, 51);
   display: flex;
-  height: 100vh;
+  height: 87vh;
   justify-content: center;
   width: 100%;
 
   &--div {
     background-color: rgb(60, 62, 68);
     border-radius: 12px;
+
+    &--button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
   }
 }
