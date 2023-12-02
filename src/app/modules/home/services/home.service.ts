@@ -1,11 +1,11 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import {
   CharacterResponse,
   Gender,
 } from '../../shared/interfaces/character-interface';
 import { environment } from 'src/environments/environment.development';
 import { HomeCharacter } from '../interfaces/home.character.interface';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 @Injectable()
