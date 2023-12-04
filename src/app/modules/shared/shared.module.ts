@@ -1,7 +1,7 @@
-import { CardComponent } from './containers/card/card.component';
+import { CardComponent } from './components/card/card.component';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './containers/button/button.component';
-import { FilterFormComponent } from './containers/filter-form/filter-form.component';
+import { ButtonComponent } from './components/button/button.component';
+import { FilterFormComponent } from './components/filter-form/filter-form.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
