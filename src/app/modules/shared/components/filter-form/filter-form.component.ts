@@ -8,8 +8,8 @@ import { Gender } from '../../interfaces/character-interface';
   styleUrls: ['./filter-form.component.scss'],
 })
 export class FilterFormComponent implements OnInit {
-  @Output() onFormChange: EventEmitter<any> = new EventEmitter();
-  @Output() onReset: EventEmitter<any> = new EventEmitter();
+  @Output() onFormChange: EventEmitter<Gender> = new EventEmitter();
+  @Output() onReset = new EventEmitter();
 
   public filterForm: FormGroup = new FormGroup({
     gender: new FormControl(null, [Validators.required]),
@@ -22,14 +22,14 @@ export class FilterFormComponent implements OnInit {
     Gender.UNKNOWN,
   ];
 
-  private formEmition!: any;
+  private formEmission!: any;
 
   ngOnInit(): void {
     this.formSubscription();
   }
 
   public emitForm(): void {
-    this.onFormChange.emit(this.formEmition);
+    this.onFormChange.emit(this.formEmission);
   }
 
   public resetForm(): void {
@@ -39,7 +39,7 @@ export class FilterFormComponent implements OnInit {
 
   private formSubscription(): void {
     this.filterForm.valueChanges.subscribe((filterForm) => {
-      this.formEmition = filterForm;
+      this.formEmission = filterForm;
     });
   }
 }

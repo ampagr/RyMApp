@@ -1,8 +1,9 @@
-import { Card } from 'src/app/modules/shared/interfaces/card.interface';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Card } from 'src/app/modules/shared/interfaces/card.interface';
 import { HomeCharacter } from '../../interfaces/home.character.interface';
 import { HomeService } from '../../services/home.service';
-import { Router } from '@angular/router';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -10,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public homeCharacters: HomeCharacter[] = [];
-  public isShowed = true;
 
   constructor(private homeService: HomeService, private router: Router) {}
 
@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
     this.homeService
       .setGender(formValue.gender)
       .subscribe((filteredCharacters: HomeCharacter[]) => {
-        console.log(filteredCharacters);
         this.homeCharacters = filteredCharacters;
       });
   }
