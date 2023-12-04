@@ -1,5 +1,5 @@
 import { Button, Color, Size } from '../../interfaces/button.interface';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'rm-button',
@@ -9,6 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input()
   public button!: Button;
+
+  @Output()
+  public onClick = new EventEmitter();
 
   public setColorNgClass!: string;
   public setSizeNgClass!: string;
@@ -30,6 +33,10 @@ export class ButtonComponent implements OnInit {
 
   ngOnInit(): void {
     this.setColorAndSize(this.button.color, this.button.size);
+  }
+
+  public selectedButton(): void {
+    this.onClick.emit();
   }
 
   private setColorAndSize(color: Color, size: Size): void {

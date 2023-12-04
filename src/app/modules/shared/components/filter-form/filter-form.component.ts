@@ -22,7 +22,7 @@ export class FilterFormComponent implements OnInit {
     Gender.UNKNOWN,
   ];
 
-  private formEmission!: any;
+  private formEmission!: Gender;
 
   ngOnInit(): void {
     this.formSubscription();
