@@ -1,6 +1,5 @@
-import { Button, Color, Size } from '../../interfaces/button.interface';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { Button, Color, Size } from '../../interfaces/button.interface';
 @Component({
   selector: 'rm-button',
   templateUrl: './button.component.html',

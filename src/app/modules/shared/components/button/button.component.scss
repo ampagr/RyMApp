@@ -51,3 +51,9 @@
     color: white;
   }
 }
+
+.rm__button[disabled]:hover {
+  background-color: #f4f4f4;
+  color: rgb(39, 43, 51);
+  cursor: not-allowed;
+}

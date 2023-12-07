@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Button, Color, Size } from '../../interfaces/button.interface';
 import { Gender } from '../../interfaces/character-interface';
 
 @Component({
@@ -22,9 +24,25 @@ export class FilterFormComponent implements OnInit {
     Gender.UNKNOWN,
   ];
 
+  public filterButton: Button = {
+    color: Color.DEFAULT,
+    size: Size.SMALL,
+    text: 'Filter',
+    disabled: false,
+  };
+
+  public resetButton: Button = {
+    color: Color.DEFAULT,
+    size: Size.SMALL,
+    text: 'Reset',
+    disabled: false,
+  };
+
   private formEmission!: Gender;
 
   ngOnInit(): void {
+    this.updateButtonState(this.filterButton);
+    this.updateButtonState(this.resetButton);
     this.formSubscription();
   }
 
@@ -37,9 +55,16 @@ export class FilterFormComponent implements OnInit {
     this.filterForm.reset();
   }
 
+  public updateButtonState(button: Button): Button {
+    button.disabled = !this.filterForm.valid && !this.filterForm.touched;
+    return button;
+  }
+
   private formSubscription(): void {
     this.filterForm.valueChanges.subscribe((filterForm) => {
       this.formEmission = filterForm;
+      this.updateButtonState(this.filterButton);
+      this.updateButtonState(this.resetButton);
     });
   }
 }
