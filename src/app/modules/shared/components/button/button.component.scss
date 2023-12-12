@@ -8,9 +8,12 @@
   justify-content: center;
   text-decoration: none;
 
-  &[disabled]:hover {
+  &:hover{
     background-color: #f4f4f4;
     color: rgb(39, 43, 51);
+  }
+
+  &[disabled]:hover {
     cursor: not-allowed;
   }
 

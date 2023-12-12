@@ -10,12 +10,12 @@
   </select>
   <rm-button
     [button]="updateButtonState(filterButton)"
-    (click)="emitForm()"
+    (onClick)="emitForm()"
     class="form__container--filter"
   ></rm-button>
   <rm-button
     [button]="updateButtonState(resetButton)"
-    (click)="resetForm()"
+    (onClick)="resetForm()"
     class="form__container--reset"
   ></rm-button>
 </form>
