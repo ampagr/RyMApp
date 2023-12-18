@@ -14,7 +14,7 @@ export class FilterFormComponent implements OnInit {
   @Output() onReset = new EventEmitter();
 
   public filterForm: FormGroup = new FormGroup({
-    gender: new FormControl(null, [Validators.required]),
+    gender: new FormControl('defaultOption', [Validators.required]),
   });
 
   public genders: Gender[] = [
@@ -52,11 +52,11 @@ export class FilterFormComponent implements OnInit {
 
   public resetForm(): void {
     this.onReset.emit();
-    this.filterForm.reset();
+    this.filterForm.patchValue({ gender: 'defaultOption'});
   }
 
   public updateButtonState(button: Button): Button {
-    button.disabled = !this.filterForm.valid && !this.filterForm.touched;
+    button.disabled = !this.filterForm.valid || this.filterForm.get('gender')?.value === 'defaultOption';
     return button;
   }
 

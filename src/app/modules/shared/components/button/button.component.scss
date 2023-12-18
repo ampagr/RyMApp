@@ -9,11 +9,13 @@
   text-decoration: none;
 
   &:hover{
-    background-color: #f4f4f4;
-    color: rgb(39, 43, 51);
+    background-color: #767676;
+    color: #f4f4f4;
   }
 
   &[disabled]:hover {
+    background-color: #f4f4f4;
+    color: rgb(39, 43, 51);
     cursor: not-allowed;
   }
 

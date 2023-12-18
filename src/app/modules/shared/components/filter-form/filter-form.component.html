@@ -4,6 +4,7 @@
     formControlName="gender"
     class="form__container--control"
   >
+    <option [value]="'defaultOption'" disabled>-- Select your gender --</option>
     <option *ngFor="let gender of genders" [value]="gender">
       {{ gender }}
     </option>
