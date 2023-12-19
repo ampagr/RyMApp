@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Button, Color, Size } from '../../interfaces/button.interface';
 import { Gender } from '../../interfaces/character-interface';
 
 @Component({
@@ -8,11 +10,11 @@ import { Gender } from '../../interfaces/character-interface';
   styleUrls: ['./filter-form.component.scss'],
 })
 export class FilterFormComponent implements OnInit {
-  @Output() onFormChange: EventEmitter<Gender> = new EventEmitter();
+  @Output() onFormChange = new EventEmitter();
   @Output() onReset = new EventEmitter();
 
   public filterForm: FormGroup = new FormGroup({
-    gender: new FormControl(null, [Validators.required]),
+    gender: new FormControl('defaultOption', [Validators.required]),
   });
 
   public genders: Gender[] = [
@@ -22,9 +24,25 @@ export class FilterFormComponent implements OnInit {
     Gender.UNKNOWN,
   ];
 
-  private formEmission!: any;
+  public filterButton: Button = {
+    color: Color.DEFAULT,
+    size: Size.SMALL,
+    text: 'Filter',
+    disabled: false,
+  };
+
+  public resetButton: Button = {
+    color: Color.DEFAULT,
+    size: Size.SMALL,
+    text: 'Reset',
+    disabled: false,
+  };
+
+  private formEmission!: Gender;
 
   ngOnInit(): void {
+    this.updateButtonState(this.filterButton);
+    this.updateButtonState(this.resetButton);
     this.formSubscription();
   }
 
@@ -34,12 +52,19 @@ export class FilterFormComponent implements OnInit {
 
   public resetForm(): void {
     this.onReset.emit();
-    this.filterForm.reset();
+    this.filterForm.patchValue({ gender: 'defaultOption'});
+  }
+
+  public updateButtonState(button: Button): Button {
+    button.disabled = !this.filterForm.valid || this.filterForm.get('gender')?.value === 'defaultOption';
+    return button;
   }
 
   private formSubscription(): void {
     this.filterForm.valueChanges.subscribe((filterForm) => {
       this.formEmission = filterForm;
+      this.updateButtonState(this.filterButton);
+      this.updateButtonState(this.resetButton);
     });
   }
 }

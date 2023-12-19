@@ -1,7 +1,10 @@
 .form__container {
+  align-items: center;
   background-color: rgb(60, 62, 68);
   border-radius: 8px;
   color: white;
+  display: flex;
+  flex-direction: row;
   padding: 20px;
 
   &--label {

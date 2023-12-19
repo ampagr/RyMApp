@@ -18,6 +18,7 @@ export class DetailComponent implements OnInit {
     color: Color.DEFAULT,
     size: Size.MEDIUM,
     text: 'Go to Home',
+    disabled: false,
   };
   private id!: string | null;
 

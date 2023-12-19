@@ -1,6 +1,8 @@
 <button
-  class="rm__button"
-  [ngClass]="[setColorNgClass, setSizeNgClass]"
+[disabled]="button.disabled"
+[ngClass]="[setColorNgClass, setSizeNgClass]"
+(click)="selectedButton()"
+class="rm__button"
 >
   {{ button.text }}
 </button>

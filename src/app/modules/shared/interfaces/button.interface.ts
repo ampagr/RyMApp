@@ -2,6 +2,7 @@ export interface Button {
   color: Color;
   size: Size;
   text: string;
+  disabled: boolean;
 }
 
 export enum Color {
