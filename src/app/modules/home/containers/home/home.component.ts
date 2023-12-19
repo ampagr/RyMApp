@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Card } from 'src/app/modules/shared/interfaces/card.interface';
-import { Gender } from 'src/app/modules/shared/interfaces/character-interface';
 import { HomeCharacter } from '../../interfaces/home.character.interface';
 import { HomeService } from '../../services/home.service';
 
