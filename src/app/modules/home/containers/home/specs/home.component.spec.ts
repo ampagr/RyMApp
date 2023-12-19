@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Gender } from 'src/app/modules/shared/interfaces/character-interface';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { HomeCharacter } from '../../../interfaces/home.character.interface';
 import { HomeService } from '../../../services/home.service';
 import { HomeComponent } from '../home.component';
-import { Router } from '@angular/router';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const homeCharacterMock: HomeCharacter = {
   id: 1,
@@ -72,10 +72,10 @@ describe('HomeComponent', () => {
       name: 'name test',
       species: 'species test',
       gender: Gender.FEMALE,
-      image: 'image test'
+      image: 'image test',
     };
-    expect(component.setCardConfig(homeCharacterMock)).toEqual(cardMock)
-  })
+    expect(component.setCardConfig(homeCharacterMock)).toEqual(cardMock);
+  });
 
   it('should call getCharacters', () => {
     component.getCharacters();
